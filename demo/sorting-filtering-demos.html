@@ -1,44 +1,15 @@
-<!doctype html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <title>vaadin-grid – Sorting and Filtering</title>
-
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
-  <link rel="import" href="../vaadin-grid-sorter.html">
-  <link rel="import" href="../vaadin-grid-filter.html">
-
-  <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
-
-  <link rel="import" href="common.html">
-</head>
-
-<body unresolved>
-  <div class="vertical-section-container centered">
-    <demo-navigation></demo-navigation>
-
+<dom-module id="sorting-filtering-demos">
+  <template>
     <style>
-      paper-checkbox {
-        margin-bottom: 10px;
+       :host {
+        display: block;
       }
+
     </style>
 
     <h3>Sorting</h3>
-    <p>
-      <code>&lt;vaadin-grid-sorter&gt;</code> can be used to define sorting for a column.
-      The users in the example are sorted by last name initially.
-    </p>
-    <p>
-      <b>NOTE: You must explicitly import the <code>vaadin-grid-sorter.html</code> in order to use <code>&lt;vaadin-grid-sorter&gt;</code>.</b>
-    </p>
-
-    <demo-snippet>
-      <template>
+    <vaadin-demo-snippet id='sorting'>
+      <template preserve-content>
         <dom-bind>
           <template is="dom-bind">
 
@@ -50,72 +21,56 @@
 
               <vaadin-grid-column width="50px" flex-grow="0">
                 <template class="header">#</template>
-                <template>[[index]]</template>
+                <template preserve-content>[[index]]</template>
               </vaadin-grid-column>
 
               <vaadin-grid-column>
                 <template class="header">
                   <vaadin-grid-sorter path="name.first">First Name</vaadin-grid-sorter>
                 </template>
-                <template>[[item.name.first]]</template>
+                <template preserve-content>[[item.name.first]]</template>
               </vaadin-grid-column>
 
               <vaadin-grid-column>
                 <template class="header">
                   <vaadin-grid-sorter path="name.last" direction="asc">Last Name</vaadin-grid-sorter>
                 </template>
-                <template>[[item.name.last]]</template>
+                <template preserve-content>[[item.name.last]]</template>
               </vaadin-grid-column>
 
             </vaadin-grid>
           </template>
         </dom-bind>
       </template>
-    </demo-snippet>
+    </vaadin-demo-snippet>
 
     <h3>Sorting with Data Provider</h3>
-    <p>
-      When the data is fetched from a data provider, the responsibility
-      of providing the correctly ordered data is on the data provider itself.
-      The data provider is asked for fresh sorted data whenever the sorting
-      order is changed on any <code>&lt;vaadin-grid-sorter&gt;</code>.
-    </p>
-    <p>
-      The effective <code>sortOrders</code> array will be included as one of
-      the data provider call options.
-    </p>
-    <p>
-      <b>Hint: </b>When using a data provider, <code>path</code> on the
-      <code>&lt;vaadin-grid-sorter&gt;</code> element can be set to any string,
-      instead of a property on the item object.
-    </p>
-
-    <demo-snippet>
-      <template>
+    <vaadin-demo-snippet id='sorting-with-data-provider'>
+      <template preserve-content>
         <x-remote-sorting-example></x-remote-sorting-example>
         <dom-module id="x-remote-sorting-example">
-          <template>
+          <template preserve-content>
             <paper-checkbox checked="{{multiSort}}">Enable Multi-Sorting</paper-checkbox>
 
             <vaadin-grid aria-label="Sorting with Data Provider Example" id="grid" multi-sort="[[multiSort]]">
 
               <vaadin-grid-column width="50px" flex-grow="0">
                 <template class="header">#</template>
-                <template>[[index]]</template>
+                <template preserve-content>[[index]]</template>
               </vaadin-grid-column>
 
               <vaadin-grid-column>
                 <template class="header">
                   <vaadin-grid-sorter path="firstName">First Name</vaadin-grid-sorter>
                 </template>
-                <template>[[item.firstName]]</template>
+                <template preserve-content>[[item.firstName]]</template>
               </vaadin-grid-column>
 
               <vaadin-grid-column>
                 <template class="header">
                   <vaadin-grid-sorter path="lastName">Last Name</vaadin-grid-sorter>
                 </template>
-                <template>[[item.lastName]]</template>
+                <template preserve-content>[[item.lastName]]</template>
               </vaadin-grid-column>
 
             </vaadin-grid>
@@ -153,18 +108,11 @@
           </script>
         </dom-module>
       </template>
-    </demo-snippet>
+    </vaadin-demo-snippet>
 
     <h3>Filtering</h3>
-    <p>
-      <code>&lt;vaadin-grid-filter&gt;</code> can be used to define filtering for a column.
-    </p>
-    <p>
-      <b>NOTE: You must explicitly import the <code>vaadin-grid-filter.html</code> in order to use <code>&lt;vaadin-grid-filter&gt;</code>.</b>
-    </p>
-
-    <demo-snippet>
-      <template>
+    <vaadin-demo-snippet id='filtering'>
+      <template preserve-content>
         <dom-bind>
           <template is="dom-bind">
 
@@ -174,7 +122,7 @@
 
               <vaadin-grid-column width="50px" flex-grow="0">
                 <template class="header">#</template>
-                <template>[[index]]</template>
+                <template preserve-content>[[index]]</template>
               </vaadin-grid-column>
 
               <vaadin-grid-column>
@@ -183,7 +131,7 @@
                     <!--<input placeholder="First Name" value="{{_filterFirstName::input}}" focus-target>-->
                   </vaadin-grid-filter>
                 </template>
-                <template>[[item.name.first]]</template>
+                <template preserve-content>[[item.name.first]]</template>
               </vaadin-grid-column>
 
               <vaadin-grid-column>
@@ -192,40 +140,26 @@
                     <input placeholder="Last Name" value="{{_filterLastName::input}}" focus-target>
                   </vaadin-grid-filter>
                 </template>
-                <template>[[item.name.last]]</template>
+                <template preserve-content>[[item.name.last]]</template>
               </vaadin-grid-column>
 
             </vaadin-grid>
           </template>
         </dom-bind>
       </template>
-    </demo-snippet>
+    </vaadin-demo-snippet>
 
     <h3>Filtering with Data Provider</h3>
-    <p>
-      While filtering works with array data providers out-of-the-box, custom data
-      providers need to provide pre-filtered data to the vaadin-grid.
-    </p>
-    <p>
-      Whenever the value of a vaadin-grid-filter changes, for example, when
-      a user types something, the dataProvider is asked for fresh data with
-      the <code>filters</code> included as one of the request parameters.
-    </p>
-    <p>
-      <b>Hint: </b>When using a data provider, <code>path</code> on the filter element
-      can be customized to be any string, instead of a property on the item object.
-    </p>
-
-    <demo-snippet>
-      <template>
+    <vaadin-demo-snippet id='filtering-with-data-provider'>
+      <template preserve-content>
         <x-remote-filtering-example></x-remote-filtering-example>
         <dom-module id="x-remote-filtering-example">
-          <template>
+          <template preserve-content>
             <vaadin-grid aria-label="Filtering with Data Provider Example" id="grid">
 
               <vaadin-grid-column width="50px" flex-grow="0">
                 <template class="header">#</template>
-                <template>[[index]]</template>
+                <template preserve-content>[[index]]</template>
               </vaadin-grid-column>
 
               <vaadin-grid-column>
@@ -234,7 +168,7 @@
                     <input placeholder="First Name" value="{{_filterFirstName::input}}" focus-target>
                   </vaadin-grid-filter>
                 </template>
-                <template>[[item.firstName]]</template>
+                <template preserve-content>[[item.firstName]]</template>
               </vaadin-grid-column>
 
               <vaadin-grid-column>
@@ -243,7 +177,7 @@
                     <input placeholder="Last Name" value="{{_filterLastName::input}}" focus-target>
                   </vaadin-grid-filter>
                 </template>
-                <template>[[item.lastName]]</template>
+                <template preserve-content>[[item.lastName]]</template>
               </vaadin-grid-column>
 
             </vaadin-grid>
@@ -287,9 +221,12 @@
           </script>
         </dom-module>
       </template>
-    </demo-snippet>
-
-  </div>
-</body>
-
-</html>
+    </vaadin-demo-snippet>
+  </template>
+  <script>
+    class SortingFilteringDemos extends DemoReadyEventEmitter(GridDemo(Polymer.Element)) {
+      static get is() { return 'sorting-filtering-demos' }
+    }
+    customElements.define(SortingFilteringDemos.is, SortingFilteringDemos);
+  </script>
+</dom-module>

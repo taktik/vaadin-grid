@@ -1,35 +1,15 @@
-<!doctype html>
-<html>
+<dom-module id="styling-valo-demos">
+  <template>
+    <style>
+       :host {
+        display: block;
+      }
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <title>vaadin-grid – Styling: Valo</title>
-
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
-  <link rel="import" href="common.html">
-  <link rel="import" href="../vaadin-grid-selection-column.html">
-  <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
-  <link rel="import" href="../../iron-icon/iron-icon.html">
-  <link rel="import" href="../../iron-icons/iron-icons.html">
-  <link rel="import" href="../../paper-styles/color.html">
-  <link rel="import" href="../vaadin-grid-sorter.html">
-  <link rel="import" href="../vaadin-grid-filter.html">
-  <link rel="import" href="../vaadin-grid-column-group.html">
-
-</head>
-
-<body unresolved>
-
-  <div class="vertical-section-container centered">
-    <demo-navigation></demo-navigation>
+    </style>
 
     <h3>Valo</h3>
-    <demo-snippet>
-      <template>
+    <vaadin-demo-snippet id='valo'>
+      <template preserve-content>
         <dom-bind>
           <template is="dom-bind">
 
@@ -158,7 +138,7 @@
                         <input placeholder="Filter" focus-target>
                       </vaadin-grid-filter>
                     </template>
-                    <template>[[item.username]]</template>
+                    <template preserve-content>[[item.username]]</template>
                     <template class="footer">Footer</template>
                   </vaadin-grid-column>
                 </vaadin-grid-column-group>
@@ -179,7 +159,7 @@
 
                   <vaadin-grid-column width="200px" flex="0">
                     <template class="header"></template>
-                    <template>[[item.name.first]]</template>
+                    <template preserve-content>[[item.name.first]]</template>
                     <template class="footer"></template>
                   </vaadin-grid-column>
                 </vaadin-grid-column-group>
@@ -192,7 +172,7 @@
                   </template>
                   <vaadin-grid-column width="200px" flex="0">
                     <template class="header"></template>
-                    <template>[[item.name.last]]</template>
+                    <template preserve-content>[[item.name.last]]</template>
                     <template class="footer"></template>
                   </vaadin-grid-column>
                 </vaadin-grid-column-group>
@@ -209,7 +189,7 @@
 
                   <vaadin-grid-column width="200px" flex="0">
                     <template class="header"></template>
-                    <template>[[item.name.first]]</template>
+                    <template preserve-content>[[item.name.first]]</template>
                     <template class="footer"></template>
                   </vaadin-grid-column>
                 </vaadin-grid-column-group>
@@ -218,7 +198,7 @@
                   <template class="header">State</template>
                   <vaadin-grid-column width="200px" flex="0">
                     <template class="header"></template>
-                    <template>[[item.name.last]]</template>
+                    <template preserve-content>[[item.name.last]]</template>
                     <template class="footer"></template>
                   </vaadin-grid-column>
                 </vaadin-grid-column-group>
@@ -229,9 +209,12 @@
           </template>
         </dom-bind>
       </template>
-    </demo-snippet>
-
-  </div>
-</body>
-
-</html>
+    </vaadin-demo-snippet>
+  </template>
+  <script>
+    class StylingValoDemos extends DemoReadyEventEmitter(GridDemo(Polymer.Element)) {
+      static get is() { return 'styling-valo-demos' }
+    }
+    customElements.define(StylingValoDemos.is, StylingValoDemos);
+  </script>
+</dom-module>

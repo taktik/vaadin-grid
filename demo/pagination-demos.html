@@ -1,37 +1,18 @@
-<!doctype html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <title>vaadin-grid – Pagination</title>
-
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
-  <link rel="import" href="common.html">
-</head>
-
-<body unresolved>
-  <div class="vertical-section-container centered">
-    <demo-navigation></demo-navigation>
-
+<dom-module id="pagination-demos">
+  <template>
     <style>
-      vaadin-grid {
-        text-transform: none;
+       :host {
+        display: block;
       }
+
     </style>
 
     <h3>Pagination</h3>
-    <p>
-      The <code>&lt;vaadin-grid&gt;</code> is an infinitely scrolling list by nature, but simple pagination can be implemented for example by changing the grid's <code>items</code> array on page change.
-    </p>
-    <demo-snippet>
-      <template>
+    <vaadin-demo-snippet id='pagination'>
+      <template preserve-content>
         <x-pagination></x-pagination>
         <dom-module id="x-pagination">
-          <template>
+          <template preserve-content>
             <style>
               vaadin-grid {
                 height: auto;
@@ -73,21 +54,21 @@
 
               <vaadin-grid-column>
                 <template class="header">First Name</template>
-                <template>
+                <template preserve-content>
                   [[item.name.first]]
                 </template>
               </vaadin-grid-column>
 
               <vaadin-grid-column>
                 <template class="header">Last Name</template>
-                <template>
+                <template preserve-content>
                   [[item.name.last]]
                 </template>
               </vaadin-grid-column>
 
               <vaadin-grid-column width="200px">
                 <template class="header">Email</template>
-                <template>
+                <template preserve-content>
                   <div>[[item.name.first]].[[item.name.last]]@example.com</div>
                 </template>
               </vaadin-grid-column>
@@ -154,8 +135,12 @@
           </script>
         </dom-module>
       </template>
-    </demo-snippet>
-  </div>
-</body>
-
-</html>
+    </vaadin-demo-snippet>
+  </template>
+  <script>
+    class PaginationDemos extends DemoReadyEventEmitter(GridDemo(Polymer.Element)) {
+      static get is() { return 'pagination-demos' }
+    }
+    customElements.define(PaginationDemos.is, PaginationDemos);
+  </script>
+</dom-module>

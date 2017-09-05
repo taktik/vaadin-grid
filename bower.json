@@ -42,7 +42,7 @@
     "iron-icon": "PolymerElements/iron-icon#^v2.0.0",
     "paper-styles": "PolymerElements/paper-styles#^v2.0.0",
     "iron-component-page": "^v2.0.0",
-    "elements-demo-resources": "v2.0.0",
+    "vaadin-demo-helpers": "marcushellberg/vaadin-demo-helpers",
     "iron-ajax": "PolymerElements/iron-ajax#^v2.0.0",
     "app-localize-behavior": "^v2.0.0"
   },
